@@ -769,11 +769,7 @@ Output
           <h3 class="cat-title">Herbs</h3>
           <p class="cat-desc">61 sacred herbs available by the ounce or quarter pound. Select an herb below to see pricing. Contact us to order — shipping available.</p>
         </div>
-
-        <div class="cat-grid" id="grid-herbs">
-          <div class="cat-empty">📸 Photos coming soon</div>
-        </div>
-
+        
         <div class="herb-selector-wrap">
           <div class="herb-dropdown-wrap">
             <select id="herbSelect" class="herb-dropdown" onchange="showHerb()">
@@ -1119,10 +1115,23 @@ Output
       const CLOUD = 'dsodeeokk';
       const categories = [
         { tag: 'candles',  grid: 'grid-candles' },
-        { tag: 'herbs',    grid: 'grid-herbs'   },
         { tag: 'waters',   grid: 'grid-waters'  },
         { tag: 'beads',    grid: 'grid-beads'   }
       ];
+
+      // Herbs: populate image map only, no grid
+      fetch(`https://res.cloudinary.com/${CLOUD}/image/list/herbs.json?_=${Date.now()}`)
+        .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(data => {
+          (data.resources || []).forEach(img => {
+            const caption = img.context?.custom?.caption || img.display_name || img.filename || '';
+            if (caption) {
+              herbImageMap[caption.toLowerCase().trim()] =
+                `https://res.cloudinary.com/${CLOUD}/image/upload/q_auto,f_auto,w_300/${img.public_id}`;
+            }
+          });
+        })
+        .catch(() => {});
 
       categories.forEach(({ tag, grid }) => {
         const el = document.getElementById(grid);
