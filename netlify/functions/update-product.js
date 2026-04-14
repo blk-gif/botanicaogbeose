@@ -9,8 +9,6 @@ exports.handler = async (event) => {
   const API_KEY = process.env.CLOUDINARY_API_KEY;
   const API_SECRET = process.env.CLOUDINARY_API_SECRET;
 
-  console.log('Env check - CLOUD:', CLOUD ? 'set' : 'missing', 'KEY:', API_KEY ? 'set' : 'missing', 'SECRET:', API_SECRET ? 'set' : 'missing');
-
   if (!CLOUD || !API_KEY || !API_SECRET) {
     return { statusCode: 500, body: JSON.stringify({ error: 'Missing Cloudinary credentials' }) };
   }
@@ -19,11 +17,10 @@ exports.handler = async (event) => {
   try {
     body = JSON.parse(event.body);
   } catch(e) {
-    return { statusCode: 400, body: JSON.stringify({ error: 'Invalid JSON: ' + e.message }) };
+    return { statusCode: 400, body: JSON.stringify({ error: 'Invalid JSON' }) };
   }
 
   const { public_id, context } = body;
-  console.log('public_id:', public_id, 'context:', JSON.stringify(context));
 
   if (!public_id) {
     return { statusCode: 400, body: JSON.stringify({ error: 'Missing public_id' }) };
@@ -34,10 +31,10 @@ exports.handler = async (event) => {
     .map(([k, v]) => `${k}=${v}`)
     .join('|');
 
-  console.log('contextStr:', contextStr);
-
   const timestamp = Math.floor(Date.now() / 1000);
-  const params = { context: contextStr, public_id, timestamp };
+  const command = 'replace';
+
+  const params = { command, context: contextStr, public_id, timestamp };
   const paramsToSign = Object.keys(params)
     .sort()
     .map(k => `${k}=${params[k]}`)
@@ -49,6 +46,7 @@ exports.handler = async (event) => {
     .digest('hex');
 
   const formData = new URLSearchParams();
+  formData.append('command', command);
   formData.append('public_id', public_id);
   formData.append('context', contextStr);
   formData.append('timestamp', timestamp.toString());
@@ -74,7 +72,6 @@ exports.handler = async (event) => {
       body: JSON.stringify({ success: true, result })
     };
   } catch(e) {
-    console.log('Fetch error:', e.message);
     return { statusCode: 500, body: JSON.stringify({ error: e.message }) };
   }
 };
