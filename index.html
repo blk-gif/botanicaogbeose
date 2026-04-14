@@ -1248,7 +1248,7 @@
               const name      = img.context?.custom?.caption || '';
               const outOfStock = img.context?.custom?.out_of_stock === 'true';
               const numPrice  = parseFloat((salePrice || price).replace(/[^0-9.]/g, '')) || 0;
-              const productId = (name || img.public_id).toLowerCase().replace(/[^a-z0-9]/g, '_');
+              const productId = img.public_id.replace(/[^a-zA-Z0-9]/g, '_');
 
               const card = document.createElement('div');
               card.className = 'cat-item';
