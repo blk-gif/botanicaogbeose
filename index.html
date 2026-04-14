@@ -1266,7 +1266,7 @@
                   data-item-id="${productId}"
                   data-item-name="${name}"
                   data-item-price="${numPrice}"
-                  data-item-url="/"
+                  data-item-url="https://botanicaogbeose.com/products.json"
                   data-item-image="${url}"
                   data-item-description="${tag}"
                   ${outOfStock ? 'disabled' : ''}
@@ -1312,10 +1312,12 @@
       ozBtn.setAttribute('data-item-id', herbId + '_1oz');
       ozBtn.setAttribute('data-item-name', herbName + ' (1 oz)');
       ozBtn.setAttribute('data-item-price', ozPrice);
+      ozBtn.setAttribute('data-item-url', 'https://botanicaogbeose.com/products.json');
 
       qpBtn.setAttribute('data-item-id', herbId + '_qp');
       qpBtn.setAttribute('data-item-name', herbName + ' (¼ lb)');
       qpBtn.setAttribute('data-item-price', qpPrice);
+      ozBtn.setAttribute('data-item-url', 'https://botanicaogbeose.com/products.json');
 
       // Show matching photo if available
       const imgEl = document.getElementById('herbResultImg');
