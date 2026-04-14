@@ -1,8 +1,3 @@
-bash
-
-cat /mnt/user-data/outputs/index.html
-Output
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +6,9 @@ Output
   <title>Botanica Ogbe Oshe — Ifa Consultations, Herbs & Spiritual Work</title>
   <meta name="description" content="Botanica Ogbe Oshe LLC — Ifa readings, spiritual consultations, candles, herbs, and sacred supplies. Located in Orange City, FL." />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://app.snipcart.com" />
+  <link rel="preconnect" href="https://cdn.snipcart.com" />
+  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.3.3/default/snipcart.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -515,8 +513,80 @@ Output
       font-style:italic; font-size:0.9rem; color:var(--text-dim);
     }
 
-    /* ── ALWAYS VISIBLE — no scroll animations ── */
-    .reveal, .stagger, .stagger > * { opacity: 1 !important; transform: none !important; }
+    /* ── SNIPCART CART BUTTON ── */
+    .cart-btn {
+      position: fixed; top: 1rem; right: 1rem; z-index: 300;
+      font-family: 'Cinzel', serif; font-size: 0.7rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      background: var(--green); color: var(--bg);
+      border: none; padding: 0.6rem 1.2rem;
+      cursor: pointer; display: flex; align-items: center; gap: 0.5rem;
+      transition: background 0.3s;
+    }
+    .cart-btn:hover { background: var(--green-lt); }
+    .cart-count {
+      background: var(--bg); color: var(--green);
+      font-size: 0.65rem; font-weight: 700;
+      width: 18px; height: 18px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* ── PRODUCT BUY BUTTON ── */
+    .buy-btn {
+      width: 100%; font-family: 'Cinzel', serif; font-size: 0.65rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      background: var(--green); color: var(--bg);
+      border: none; padding: 0.6rem; cursor: pointer;
+      transition: background 0.3s; margin-top: 0.5rem;
+    }
+    .buy-btn:hover { background: var(--green-lt); }
+    .buy-btn:disabled { opacity: 0.5; cursor: not-allowed; background: var(--border); color: var(--text-dim); }
+
+    /* ── SALE BADGE ── */
+    .sale-badge {
+      position: absolute; top: 8px; left: 8px;
+      background: #e53e3e; color: white;
+      font-family: 'Cinzel', serif; font-size: 0.6rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+    }
+    .price-original {
+      font-family: 'Cinzel', serif; font-size: 0.7rem;
+      color: var(--text-dim); text-decoration: line-through;
+      margin-right: 0.3rem;
+    }
+
+    /* ── HERB BUY BUTTONS ── */
+    .herb-buy-btns {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+    .herb-buy-btn {
+      font-family: 'Cinzel', serif; font-size: 0.65rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      background: var(--green); color: var(--bg);
+      border: none; padding: 0.75rem 0.5rem; cursor: pointer;
+      transition: background 0.3s; text-align: center; line-height: 1.4;
+    }
+    .herb-buy-btn:hover { background: var(--green-lt); }
+    .herb-buy-btn span { display: block; font-size: 0.8rem; margin-top: 0.2rem; }
+
+    /* ── SNIPCART THEME OVERRIDES ── */
+    :root {
+      --color-default: #c8edd0;
+      --color-alt: #7aab85;
+      --color-input-default: #1e4a1e;
+      --color-input-checked: #5ddb7c;
+      --color-link: #5ddb7c;
+      --color-link-hover: #a8f0bc;
+      --color-icon-default: #5ddb7c;
+      --color-icon-hover: #a8f0bc;
+      --color-badge-foreground: #071407;
+      --color-badge-background: #5ddb7c;
+      --shadow-default: 0 4px 24px rgba(0,0,0,0.5);
+      --bg-color: #0c1f0c;
+      --bg-color-alt: #071407;
+    }
 
     /* ── GALLERY ── */
     #gallery { padding: 6rem 2rem; max-width: 1140px; margin: 0 auto; }
@@ -616,6 +686,11 @@ Output
   </style>
 </head>
 <body>
+
+  <!-- ── SNIPCART CART BUTTON ── -->
+  <button class="cart-btn snipcart-checkout">
+    🛒 Cart <span class="cart-count snipcart-items-count">0</span>
+  </button>
 
   <!-- ── NAV ── -->
   <nav>
@@ -752,8 +827,8 @@ Output
       <div class="product-category">
         <div class="cat-header">
           <span class="cat-icon">🕯️</span>
-          <h3 class="cat-title">Candles & Other Spiritual Items</h3>
-          <p class="cat-desc">Ritual candles, spiritual supplies, and sacred items for prayer, offerings, and ceremony.</p>
+          <h3 class="cat-title">Candles</h3>
+          <p class="cat-desc">Ritual candles for prayer, offerings, and spiritual work in various intentions.</p>
         </div>
         <div class="cat-grid" id="grid-candles">
           <div class="cat-empty">📸 Photos coming soon</div>
@@ -769,7 +844,7 @@ Output
           <h3 class="cat-title">Herbs</h3>
           <p class="cat-desc">61 sacred herbs available by the ounce or quarter pound. Select an herb below to see pricing. Contact us to order — shipping available.</p>
         </div>
-        
+
         <div class="herb-selector-wrap">
           <div class="herb-dropdown-wrap">
             <select id="herbSelect" class="herb-dropdown" onchange="showHerb()">
@@ -855,6 +930,26 @@ Output
               </div>
             </div>
             <p class="herb-result-note">Contact us via WhatsApp, Instagram, or the booking form to place your order. Shipping available.</p>
+            <div class="herb-buy-btns">
+              <button id="herbBuyOz"
+                class="herb-buy-btn snipcart-add-item"
+                data-item-id="herb_oz"
+                data-item-name="Herb (1 oz)"
+                data-item-price="0"
+                data-item-url="/"
+                data-item-description="Sacred herb - 1 oz">
+                Add to Cart<span>Per Ounce</span>
+              </button>
+              <button id="herbBuyQp"
+                class="herb-buy-btn snipcart-add-item"
+                data-item-id="herb_qp"
+                data-item-name="Herb (¼ lb)"
+                data-item-price="0"
+                data-item-url="/"
+                data-item-description="Sacred herb - quarter pound">
+                Add to Cart<span>Quarter Pound</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -937,7 +1032,7 @@ Output
           <select id="service" name="service" required>
             <option value="" disabled selected>— Select a service —</option>
             <option value="Ifa Consultation / Reading">Ifa Consultation / Reading — $50+</option>
-            <option value="Candles & Other Spiritual Items">Candles & Other Spiritual Items</option>
+            <option value="Candles & Spiritual Supplies">Candles & Spiritual Supplies</option>
             <option value="Herbs & Natural Remedies">Herbs & Natural Remedies</option>
             <option value="Spiritual Work & Cleansings">Spiritual Work & Cleansings</option>
             <option value="Product Order">Product Order (Holy Water, Florida Water, etc.)</option>
@@ -1115,23 +1210,10 @@ Output
       const CLOUD = 'dsodeeokk';
       const categories = [
         { tag: 'candles',  grid: 'grid-candles' },
+        { tag: 'herbs',    grid: 'grid-herbs'   },
         { tag: 'waters',   grid: 'grid-waters'  },
         { tag: 'beads',    grid: 'grid-beads'   }
       ];
-
-      // Herbs: populate image map only, no grid
-      fetch(`https://res.cloudinary.com/${CLOUD}/image/list/herbs.json?_=${Date.now()}`)
-        .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
-        .then(data => {
-          (data.resources || []).forEach(img => {
-            const caption = img.context?.custom?.caption || img.display_name || img.filename || '';
-            if (caption) {
-              herbImageMap[caption.toLowerCase().trim()] =
-                `https://res.cloudinary.com/${CLOUD}/image/upload/q_auto,f_auto,w_300/${img.public_id}`;
-            }
-          });
-        })
-        .catch(() => {});
 
       categories.forEach(({ tag, grid }) => {
         const el = document.getElementById(grid);
@@ -1159,18 +1241,37 @@ Output
             if (!items.length) return; // keep "Photos coming soon" placeholder
             el.innerHTML = '';
             items.forEach(img => {
-              const url  = `https://res.cloudinary.com/${CLOUD}/image/upload/q_auto,f_auto,w_600/${img.public_id}`;
-              const full = `https://res.cloudinary.com/${CLOUD}/image/upload/q_auto,f_auto/${img.public_id}`;
-              const price = img.context?.custom?.price || '';
-              const name  = img.context?.custom?.caption || '';
-              const card  = document.createElement('div');
+              const url       = `https://res.cloudinary.com/${CLOUD}/image/upload/q_auto,f_auto,w_600/${img.public_id}`;
+              const full      = `https://res.cloudinary.com/${CLOUD}/image/upload/q_auto,f_auto/${img.public_id}`;
+              const price     = img.context?.custom?.price || '';
+              const salePrice = img.context?.custom?.sale_price || '';
+              const name      = img.context?.custom?.caption || '';
+              const outOfStock = img.context?.custom?.out_of_stock === 'true';
+              const numPrice  = parseFloat((salePrice || price).replace(/[^0-9.]/g, '')) || 0;
+              const productId = img.public_id.replace(/[^a-zA-Z0-9]/g, '_');
+
+              const card = document.createElement('div');
               card.className = 'cat-item';
               card.innerHTML = `
-                <img src="${url}" alt="${name || tag}" loading="lazy" />
+                ${salePrice ? '<span class="sale-badge">Sale</span>' : ''}
+                <img src="${url}" alt="${name || tag}" loading="lazy" style="cursor:pointer" />
                 <div class="cat-item-info">
                   <span class="cat-item-name">${name}</span>
-                  <span class="cat-item-price">${price}</span>
-                </div>`;
+                  <span class="cat-item-price">
+                    ${salePrice ? `<span class="price-original">${price}</span>${salePrice}` : price}
+                  </span>
+                </div>
+                <button
+                  class="buy-btn snipcart-add-item"
+                  data-item-id="${productId}"
+                  data-item-name="${name}"
+                  data-item-price="${numPrice}"
+                  data-item-url="/"
+                  data-item-image="${url}"
+                  data-item-description="${tag}"
+                  ${outOfStock ? 'disabled' : ''}
+                >${outOfStock ? 'Out of Stock' : 'Add to Cart'}</button>`;
+
               card.querySelector('img').addEventListener('click', () => {
                 document.getElementById('lightboxImg').src = full;
                 document.getElementById('lightbox').classList.add('open');
@@ -1196,9 +1297,25 @@ Output
       if (!sel.value) { result.style.display = 'none'; return; }
       const parts = sel.value.split('|');
       const herbName = parts[0];
+      const ozPrice  = parseFloat(parts[1]);
+      const qpPrice  = parseFloat(parts[2]);
+      const herbId   = herbName.toLowerCase().replace(/[^a-z0-9]/g, '_');
+
       document.getElementById('herbResultName').textContent = herbName;
       document.getElementById('herbOz').textContent = '$' + parts[1];
       document.getElementById('herbQp').textContent = '$' + parts[2];
+
+      // Update herb buy buttons
+      const ozBtn = document.getElementById('herbBuyOz');
+      const qpBtn = document.getElementById('herbBuyQp');
+
+      ozBtn.setAttribute('data-item-id', herbId + '_1oz');
+      ozBtn.setAttribute('data-item-name', herbName + ' (1 oz)');
+      ozBtn.setAttribute('data-item-price', ozPrice);
+
+      qpBtn.setAttribute('data-item-id', herbId + '_qp');
+      qpBtn.setAttribute('data-item-name', herbName + ' (¼ lb)');
+      qpBtn.setAttribute('data-item-price', qpPrice);
 
       // Show matching photo if available
       const imgEl = document.getElementById('herbResultImg');
@@ -1264,5 +1381,7 @@ Output
       }
     });
   </script>
+  <div hidden id="snipcart" data-api-key="MTk5MGNjMGQtOWZkNS00MmZmLTkxN2MtMTg0YjFkZDQyZTNkNjM5MTE3Njg5NDI0OTYyODQw"></div>
+  <script async src="https://cdn.snipcart.com/themes/v3.3.3/default/snipcart.js"></script>
 </body>
 </html>
