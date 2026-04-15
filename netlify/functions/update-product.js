@@ -32,7 +32,7 @@ exports.handler = async (event) => {
     .join('|');
 
   const timestamp = Math.floor(Date.now() / 1000);
-  const command = 'replace';
+  const command = 'add';
 
   // Cloudinary excludes public_id from signature for context endpoint
   // Sign only: command, context, timestamp (alphabetically sorted)
