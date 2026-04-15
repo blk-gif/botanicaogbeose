@@ -34,11 +34,9 @@ exports.handler = async (event) => {
   const timestamp = Math.floor(Date.now() / 1000);
   const command = 'replace';
 
-  const params = { command, context: contextStr, public_id, timestamp };
-  const paramsToSign = Object.keys(params)
-    .sort()
-    .map(k => `${k}=${params[k]}`)
-    .join('&');
+  // Cloudinary excludes public_id from signature for context endpoint
+  // Sign only: command, context, timestamp (alphabetically sorted)
+  const paramsToSign = `command=${command}&context=${contextStr}&timestamp=${timestamp}`;
 
   const signature = crypto
     .createHash('sha1')
