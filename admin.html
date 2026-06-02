@@ -54,20 +54,6 @@
     .photo-info{padding:0.4rem 0.6rem;display:flex;justify-content:space-between;align-items:center}
     .photo-info-name{font-size:0.75rem;color:var(--text-dim);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:80px}
     .photo-info-price{font-family:'Cinzel',serif;font-size:0.72rem;color:var(--green)}
-    .photo-actions{padding:0.4rem 0.6rem;display:flex;flex-direction:column;gap:0.4rem;border-top:1px solid var(--border)}
-    .stock-row{display:flex;align-items:center;justify-content:space-between;gap:0.5rem}
-    .stock-label{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim)}
-    .stock-toggle{position:relative;width:36px;height:20px;cursor:pointer}
-    .stock-toggle input{opacity:0;width:0;height:0}
-    .stock-slider{position:absolute;inset:0;background:var(--border);border-radius:20px;transition:0.3s}
-    .stock-slider:before{content:'';position:absolute;width:14px;height:14px;left:3px;bottom:3px;background:var(--text-dim);border-radius:50%;transition:0.3s}
-    .stock-toggle input:checked+.stock-slider{background:var(--red)}
-    .stock-toggle input:checked+.stock-slider:before{transform:translateX(16px);background:white}
-    .sale-row{display:flex;align-items:center;gap:0.5rem}
-    .sale-input{background:var(--bg);border:1px solid var(--border);color:var(--text);font-family:'Cormorant Garamond',serif;font-size:0.85rem;padding:0.25rem 0.5rem;width:70px;outline:none}
-    .sale-input:focus{border-color:var(--green)}
-    .save-meta-btn{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--green);color:var(--bg);border:none;padding:0.3rem 0.6rem;cursor:pointer;width:100%;margin-top:0.3rem}
-    .save-meta-btn:hover{background:var(--green-lt)}
     .delete-btn{position:absolute;top:5px;right:5px;background:rgba(0,0,0,0.8);color:var(--red);border:1px solid var(--red);width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:0.9rem;opacity:0;transition:opacity 0.2s}
     .photo-thumb:hover .delete-btn{opacity:1}
     .empty-grid{grid-column:1/-1;text-align:center;padding:2.5rem;color:var(--text-dim);font-style:italic;border:2px dashed var(--border)}
@@ -97,15 +83,16 @@
     </div>
     <div class="admin-body">
       <div class="cat-tabs">
-        <button class="cat-tab active" onclick="switchTab(event,'candles')">🕯️ Candles</button>
+        <button class="cat-tab active" onclick="switchTab(event,'candles')">✨ Spiritual Supplies</button>
         <button class="cat-tab" onclick="switchTab(event,'herbs')">🌿 Herbs</button>
         <button class="cat-tab" onclick="switchTab(event,'waters')">💧 Spiritual Waters</button>
         <button class="cat-tab" onclick="switchTab(event,'beads')">📿 Beads & Necklaces</button>
+        <button class="cat-tab" onclick="switchTab(event,'apparel')">👕 Apparel</button>
       </div>
 
       <!-- CANDLES -->
       <div class="cat-panel active" id="panel-candles">
-        <div class="cat-panel-header"><h2>🕯️ Candles</h2><p>Ritual candles for prayer, offerings, and spiritual work.</p></div>
+        <div class="cat-panel-header"><h2>✨ Spiritual Supplies</h2><p>Candles, soperas, tools, incense, sage, and spiritual accessories.</p></div>
         <div class="upload-form"><h3>Add New Photo</h3>
           <div class="field-row">
             <div class="field"><label>Item Name (optional)</label><input type="text" id="name-candles" placeholder="e.g. Red Candle" /></div>
@@ -113,7 +100,7 @@
           </div>
           <div class="upload-zone" id="zone-candles"><input type="file" id="file-candles" accept="image/*" multiple /><strong>📸 Tap to Select Photos</strong><p>Pick from your camera roll</p></div>
           <div class="progress-wrap" id="prog-candles"><div class="progress-label" id="prog-label-candles">Uploading…</div><div class="progress-bar-wrap"><div class="progress-bar" id="prog-bar-candles"></div></div></div>
-          <button class="upload-btn" id="btn-candles" onclick="uploadFiles('candles')">Upload to Candles</button>
+          <button class="upload-btn" id="btn-candles" onclick="uploadFiles('candles')">Upload to Spiritual Supplies</button>
         </div>
         <div class="photo-grid-header"><h3>Current Photos</h3><span id="count-candles">Loading…</span></div>
         <div class="photo-grid" id="grid-candles"></div>
@@ -169,10 +156,25 @@
     </div>
   </div>
 
+      <!-- APPAREL -->
+      <div class="cat-panel" id="panel-apparel">
+        <div class="cat-panel-header"><h2>👕 Apparel</h2><p>Hats, skirts, and more.</p></div>
+        <div class="upload-form"><h3>Add New Photo</h3>
+          <div class="field-row">
+            <div class="field"><label>Item Name (optional)</label><input type="text" id="name-apparel" placeholder="e.g. Botanica Hat" /></div>
+            <div class="field"><label>Price (optional)</label><input type="text" id="price-apparel" placeholder="e.g. $25" /></div>
+          </div>
+          <div class="upload-zone" id="zone-apparel"><input type="file" id="file-apparel" accept="image/*" multiple /><strong>📸 Tap to Select Photos</strong><p>Pick from your camera roll</p></div>
+          <div class="progress-wrap" id="prog-apparel"><div class="progress-label" id="prog-label-apparel">Uploading…</div><div class="progress-bar-wrap"><div class="progress-bar" id="prog-bar-apparel"></div></div></div>
+          <button class="upload-btn" id="btn-apparel" onclick="uploadFiles('apparel')">Upload to Apparel</button>
+        </div>
+        <div class="photo-grid-header"><h3>Current Photos</h3><span id="count-apparel">Loading…</span></div>
+        <div class="photo-grid" id="grid-apparel"></div>
+      </div>
   <div class="toast" id="toast"></div>
 
   <script>
-    const PASSWORD='Botanica2025!',CLOUD='dsodeeokk',PRESET='botanica_gallery',CATS=['candles','herbs','waters','beads'];
+    const PASSWORD='Botanica2025!',CLOUD='dsodeeokk',PRESET='botanica_gallery',CATS=['candles','herbs','waters','beads','apparel'];
     function checkPassword(){
       if(document.getElementById('passwordInput').value===PASSWORD){
         document.getElementById('loginScreen').style.display='none';
@@ -203,32 +205,9 @@
             const url='https://res.cloudinary.com/'+CLOUD+'/image/upload/q_auto,f_auto/'+img.public_id;
             const name=img.context?.custom?.caption||'';
             const price=img.context?.custom?.price||'';
-            const salePrice=img.context?.custom?.sale_price||'';
-            const outOfStock=img.context?.custom?.out_of_stock==='true';
             const thumb=document.createElement('div');
             thumb.className='photo-thumb';
-            const toggleId='toggle-'+img.public_id.replace(/[^a-z0-9]/gi,'_');
-            thumb.innerHTML=`
-              <img src="${url}" alt="${name}" loading="lazy" />
-              <div class="photo-info">
-                <span class="photo-info-name">${name}</span>
-                <span class="photo-info-price">${price}</span>
-              </div>
-              <div class="photo-actions">
-                <div class="stock-row">
-                  <span class="stock-label">Out of Stock</span>
-                  <label class="stock-toggle">
-                    <input type="checkbox" id="${toggleId}" ${outOfStock?'checked':''} onchange="updateMeta('${img.public_id}',this)" />
-                    <span class="stock-slider"></span>
-                  </label>
-                </div>
-                <div class="sale-row">
-                  <span class="stock-label">Sale $</span>
-                  <input class="sale-input" type="text" placeholder="e.g. 8" value="${salePrice.replace('$','')}" data-pid="${img.public_id}" data-caption="${name}" data-price="${price}" />
-                </div>
-                <button class="save-meta-btn" onclick="saveSale(this)">Save</button>
-              </div>
-              <a class="delete-btn" href="https://console.cloudinary.com/console/media_library/search?q=${encodeURIComponent(img.public_id)}" target="_blank" title="Delete">✕</a>`;
+            thumb.innerHTML='<img src="'+url+'" alt="'+name+'" loading="lazy" /><div class="photo-info"><span class="photo-info-name">'+name+'</span><span class="photo-info-price">'+price+'</span></div><a class="delete-btn" href="https://console.cloudinary.com/console/media_library/search?q='+encodeURIComponent(img.public_id)+'" target="_blank" title="Delete">✕</a>';
             grid.appendChild(thumb);
           });
         }).catch(()=>{grid.innerHTML='<div class="empty-grid">Could not load. Check Cloudinary settings.</div>';count.textContent='';});
@@ -246,7 +225,7 @@
         label.textContent='Uploading '+(done+1)+' of '+files.length+'…';
         bar.style.width=((done/files.length)*100)+'%';
         const fd=new FormData();
-        fd.append('file',file);fd.append('upload_preset',PRESET);fd.append('tags',cat);
+        fd.append('file',file);fd.append('upload_preset',PRESET);fd.append('tags',cat);fd.append('folder','botanica_'+cat);
         if(name||price)fd.append('context','caption='+name+'|price='+price);
         try{const res=await fetch('https://api.cloudinary.com/v1_1/'+CLOUD+'/image/upload',{method:'POST',body:fd});if(!res.ok)throw new Error();}
         catch{showToast('Failed: '+file.name);}
@@ -264,60 +243,6 @@
       zone.addEventListener('dragleave',()=>zone.classList.remove('dragover'));
     });
     function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800);}
-
-    async function updateMeta(publicId, checkbox) {
-      const card = checkbox.closest('.photo-thumb');
-      const caption = card.querySelector('.photo-info-name').textContent;
-      const price = card.querySelector('.photo-info-price').textContent;
-      const saleInput = card.querySelector('.sale-input');
-      const salePrice = saleInput?.value.trim();
-      const outOfStock = checkbox.checked;
-
-      const context = { caption, price };
-      if (salePrice) context.sale_price = '$' + salePrice;
-      if (outOfStock) context.out_of_stock = 'true';
-      else context.out_of_stock = 'false';
-
-      try {
-        const res = await fetch('/.netlify/functions/update-product', {
-          method: 'POST',
-          body: JSON.stringify({ public_id: publicId, context })
-        });
-        const data = await res.json();
-        if (data.success) showToast(outOfStock ? 'Marked out of stock' : 'Back in stock');
-        else showToast('Error updating — try again');
-      } catch {
-        showToast('Error — check connection');
-      }
-    }
-
-    async function saveSale(btn) {
-      const card = btn.closest('.photo-thumb');
-      const saleInput = card.querySelector('.sale-input');
-      const publicId = saleInput.dataset.pid;
-      const caption = saleInput.dataset.caption;
-      const price = saleInput.dataset.price;
-      const salePrice = saleInput.value.trim();
-      const outOfStock = card.querySelector('input[type="checkbox"]').checked;
-
-      const context = { caption, price };
-      if (salePrice) context.sale_price = '$' + salePrice;
-      if (outOfStock) context.out_of_stock = 'true';
-
-      btn.textContent = 'Saving…';
-      try {
-        const res = await fetch('/.netlify/functions/update-product', {
-          method: 'POST',
-          body: JSON.stringify({ public_id: publicId, context })
-        });
-        const data = await res.json();
-        if (data.success) { showToast('Saved!'); btn.textContent = 'Save'; }
-        else { showToast('Error saving'); btn.textContent = 'Save'; }
-      } catch {
-        showToast('Error — check connection');
-        btn.textContent = 'Save';
-      }
-    }
   </script>
 </body>
 </html>
