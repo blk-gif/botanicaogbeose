@@ -83,16 +83,18 @@
     </div>
     <div class="admin-body">
       <div class="cat-tabs">
-        <button class="cat-tab active" onclick="switchTab(event,'candles')">✨ Spiritual Supplies</button>
+        <button class="cat-tab active" onclick="switchTab(event,'candles')">🕯️ Candles</button>
+        <button class="cat-tab" onclick="switchTab(event,'soperas')">🏺 Soperas</button>
         <button class="cat-tab" onclick="switchTab(event,'herbs')">🌿 Herbs</button>
         <button class="cat-tab" onclick="switchTab(event,'waters')">💧 Spiritual Waters</button>
-        <button class="cat-tab" onclick="switchTab(event,'beads')">📿 Beads & Necklaces</button>
+        <button class="cat-tab" onclick="switchTab(event,'spiritual_accessories')">🪔 Spiritual Accessories</button>
         <button class="cat-tab" onclick="switchTab(event,'apparel')">👕 Apparel</button>
+        <button class="cat-tab" onclick="switchTab(event,'beads')">📿 Beads & Necklaces</button>
       </div>
 
       <!-- CANDLES -->
       <div class="cat-panel active" id="panel-candles">
-        <div class="cat-panel-header"><h2>✨ Spiritual Supplies</h2><p>Candles, soperas, tools, incense, sage, and spiritual accessories.</p></div>
+        <div class="cat-panel-header"><h2>🕯️ Candles</h2><p>Ritual candles for prayer, offerings, and spiritual work.</p></div>
         <div class="upload-form"><h3>Add New Photo</h3>
           <div class="field-row">
             <div class="field"><label>Item Name (optional)</label><input type="text" id="name-candles" placeholder="e.g. Red Candle" /></div>
@@ -100,12 +102,27 @@
           </div>
           <div class="upload-zone" id="zone-candles"><input type="file" id="file-candles" accept="image/*" multiple /><strong>📸 Tap to Select Photos</strong><p>Pick from your camera roll</p></div>
           <div class="progress-wrap" id="prog-candles"><div class="progress-label" id="prog-label-candles">Uploading…</div><div class="progress-bar-wrap"><div class="progress-bar" id="prog-bar-candles"></div></div></div>
-          <button class="upload-btn" id="btn-candles" onclick="uploadFiles('candles')">Upload to Spiritual Supplies</button>
+          <button class="upload-btn" id="btn-candles" onclick="uploadFiles('candles')">Upload to Candles</button>
         </div>
         <div class="photo-grid-header"><h3>Current Photos</h3><span id="count-candles">Loading…</span></div>
         <div class="photo-grid" id="grid-candles"></div>
       </div>
 
+      <!-- SOPERAS -->
+      <div class="cat-panel" id="panel-soperas">
+        <div class="cat-panel-header"><h2>🏺 Soperas</h2><p>Tools, accessories, and sacred vessels.</p></div>
+        <div class="upload-form"><h3>Add New Photo</h3>
+          <div class="field-row">
+            <div class="field"><label>Item Name (optional)</label><input type="text" id="name-soperas" placeholder="e.g. Shango Sopera" /></div>
+            <div class="field"><label>Price (optional)</label><input type="text" id="price-soperas" placeholder="e.g. $45" /></div>
+          </div>
+          <div class="upload-zone" id="zone-soperas"><input type="file" id="file-soperas" accept="image/*" multiple /><strong>📸 Tap to Select Photos</strong><p>Pick from your camera roll</p></div>
+          <div class="progress-wrap" id="prog-soperas"><div class="progress-label" id="prog-label-soperas">Uploading…</div><div class="progress-bar-wrap"><div class="progress-bar" id="prog-bar-soperas"></div></div></div>
+          <button class="upload-btn" id="btn-soperas" onclick="uploadFiles('soperas')">Upload to Soperas</button>
+        </div>
+        <div class="photo-grid-header"><h3>Current Photos</h3><span id="count-soperas">Loading…</span></div>
+        <div class="photo-grid" id="grid-soperas"></div>
+      </div>
       <!-- HERBS -->
       <div class="cat-panel" id="panel-herbs">
         <div class="cat-panel-header"><h2>🌿 Herbs</h2><p>Sacred herbs for baths, teas, and ceremonies.</p></div>
@@ -138,6 +155,36 @@
         <div class="photo-grid" id="grid-waters"></div>
       </div>
 
+      <!-- SPIRITUAL ACCESSORIES -->
+      <div class="cat-panel" id="panel-spiritual_accessories">
+        <div class="cat-panel-header"><h2>🪔 Spiritual Accessories</h2><p>Incense, sage, and more.</p></div>
+        <div class="upload-form"><h3>Add New Photo</h3>
+          <div class="field-row">
+            <div class="field"><label>Item Name (optional)</label><input type="text" id="name-spiritual_accessories" placeholder="e.g. Palo Santo" /></div>
+            <div class="field"><label>Price (optional)</label><input type="text" id="price-spiritual_accessories" placeholder="e.g. $5" /></div>
+          </div>
+          <div class="upload-zone" id="zone-spiritual_accessories"><input type="file" id="file-spiritual_accessories" accept="image/*" multiple /><strong>📸 Tap to Select Photos</strong><p>Pick from your camera roll</p></div>
+          <div class="progress-wrap" id="prog-spiritual_accessories"><div class="progress-label" id="prog-label-spiritual_accessories">Uploading…</div><div class="progress-bar-wrap"><div class="progress-bar" id="prog-bar-spiritual_accessories"></div></div></div>
+          <button class="upload-btn" id="btn-spiritual_accessories" onclick="uploadFiles('spiritual_accessories')">Upload to Spiritual Accessories</button>
+        </div>
+        <div class="photo-grid-header"><h3>Current Photos</h3><span id="count-spiritual_accessories">Loading…</span></div>
+        <div class="photo-grid" id="grid-spiritual_accessories"></div>
+      </div>
+      <!-- APPAREL -->
+      <div class="cat-panel" id="panel-apparel">
+        <div class="cat-panel-header"><h2>👕 Apparel</h2><p>Hats, skirts, and more.</p></div>
+        <div class="upload-form"><h3>Add New Photo</h3>
+          <div class="field-row">
+            <div class="field"><label>Item Name (optional)</label><input type="text" id="name-apparel" placeholder="e.g. Botanica Hat" /></div>
+            <div class="field"><label>Price (optional)</label><input type="text" id="price-apparel" placeholder="e.g. $25" /></div>
+          </div>
+          <div class="upload-zone" id="zone-apparel"><input type="file" id="file-apparel" accept="image/*" multiple /><strong>📸 Tap to Select Photos</strong><p>Pick from your camera roll</p></div>
+          <div class="progress-wrap" id="prog-apparel"><div class="progress-label" id="prog-label-apparel">Uploading…</div><div class="progress-bar-wrap"><div class="progress-bar" id="prog-bar-apparel"></div></div></div>
+          <button class="upload-btn" id="btn-apparel" onclick="uploadFiles('apparel')">Upload to Apparel</button>
+        </div>
+        <div class="photo-grid-header"><h3>Current Photos</h3><span id="count-apparel">Loading…</span></div>
+        <div class="photo-grid" id="grid-apparel"></div>
+      </div>
       <!-- BEADS -->
       <div class="cat-panel" id="panel-beads">
         <div class="cat-panel-header"><h2>📿 Beads & Necklaces</h2><p>Handcrafted sacred beaded necklaces for protection and ceremony.</p></div>
@@ -156,25 +203,10 @@
     </div>
   </div>
 
-      <!-- APPAREL -->
-      <div class="cat-panel" id="panel-apparel">
-        <div class="cat-panel-header"><h2>👕 Apparel</h2><p>Hats, skirts, and more.</p></div>
-        <div class="upload-form"><h3>Add New Photo</h3>
-          <div class="field-row">
-            <div class="field"><label>Item Name (optional)</label><input type="text" id="name-apparel" placeholder="e.g. Botanica Hat" /></div>
-            <div class="field"><label>Price (optional)</label><input type="text" id="price-apparel" placeholder="e.g. $25" /></div>
-          </div>
-          <div class="upload-zone" id="zone-apparel"><input type="file" id="file-apparel" accept="image/*" multiple /><strong>📸 Tap to Select Photos</strong><p>Pick from your camera roll</p></div>
-          <div class="progress-wrap" id="prog-apparel"><div class="progress-label" id="prog-label-apparel">Uploading…</div><div class="progress-bar-wrap"><div class="progress-bar" id="prog-bar-apparel"></div></div></div>
-          <button class="upload-btn" id="btn-apparel" onclick="uploadFiles('apparel')">Upload to Apparel</button>
-        </div>
-        <div class="photo-grid-header"><h3>Current Photos</h3><span id="count-apparel">Loading…</span></div>
-        <div class="photo-grid" id="grid-apparel"></div>
-      </div>
   <div class="toast" id="toast"></div>
 
   <script>
-    const PASSWORD='Botanica2025!',CLOUD='dsodeeokk',PRESET='botanica_gallery',CATS=['candles','herbs','waters','beads','apparel'];
+    const PASSWORD='Botanica2025!',CLOUD='dsodeeokk',PRESET='botanica_gallery',CATS=['candles','soperas','herbs','waters','spiritual_accessories','apparel','beads'];
     function checkPassword(){
       if(document.getElementById('passwordInput').value===PASSWORD){
         document.getElementById('loginScreen').style.display='none';

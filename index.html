@@ -778,10 +778,11 @@
       </div>
 
       <div class="service-card">
-        <span class="service-icon">✨</span>
-        <h3 class="service-name">Spiritual Supplies & Apparel</h3>
+        <span class="service-icon">🕯️</span>
+        <h3 class="service-name">Candles & Spiritual Supplies</h3>
         <p class="service-desc">
-          Candles, soperas, tools, incense, sage, and spiritual accessories
+          Curated selection of ritual candles, holy water, Florida water, and
+          hard-to-find spiritual tools to support your ceremonies and daily practice.
         </p>
         <span class="service-price">Prices Vary</span>
       </div>
@@ -797,7 +798,7 @@
       </div>
 
       <div class="service-card">
-        <span class="service-icon">✨</span>
+        <span class="service-icon">🌟</span>
         <h3 class="service-name">Spiritual Work & Cleansings</h3>
         <p class="service-desc">
           Personalized energy cleansings, spiritual baths, ceremonial support,
@@ -825,11 +826,25 @@
       <!-- CANDLES -->
       <div class="product-category">
         <div class="cat-header">
-          <span class="cat-icon">✨</span>
-          <h3 class="cat-title">Spiritual Supplies</h3>
-          <p class="cat-desc">Candles, soperas, tools, incense, sage, and spiritual accessories.</p>
+          <span class="cat-icon">🕯️</span>
+          <h3 class="cat-title">Candles</h3>
+          <p class="cat-desc">Ritual candles for prayer, offerings, and spiritual work in various intentions.</p>
         </div>
         <div class="cat-grid" id="grid-candles">
+          <div class="cat-empty">📸 Photos coming soon</div>
+        </div>
+      </div>
+
+      <div class="cat-divider"></div>
+
+      <!-- SOPERAS -->
+      <div class="product-category">
+        <div class="cat-header">
+          <span class="cat-icon">🏺</span>
+          <h3 class="cat-title">Soperas</h3>
+          <p class="cat-desc">Tools, accessories, and sacred vessels.</p>
+        </div>
+        <div class="cat-grid" id="grid-soperas">
           <div class="cat-empty">📸 Photos coming soon</div>
         </div>
       </div>
@@ -935,7 +950,7 @@
                 data-item-id="herb_oz"
                 data-item-name="Herb (1 oz)"
                 data-item-price="0"
-                data-item-url="https://botanicaogbeose.com/products.json"
+                data-item-url="/"
                 data-item-description="Sacred herb - 1 oz">
                 Add to Cart<span>Per Ounce</span>
               </button>
@@ -944,7 +959,7 @@
                 data-item-id="herb_qp"
                 data-item-name="Herb (¼ lb)"
                 data-item-price="0"
-                data-item-url="https://botanicaogbeose.com/products.json"
+                data-item-url="/"
                 data-item-description="Sacred herb - quarter pound">
                 Add to Cart<span>Quarter Pound</span>
               </button>
@@ -969,6 +984,20 @@
 
       <div class="cat-divider"></div>
 
+      <!-- SPIRITUAL ACCESSORIES -->
+      <div class="product-category">
+        <div class="cat-header">
+          <span class="cat-icon">🪔</span>
+          <h3 class="cat-title">Spiritual Accessories</h3>
+          <p class="cat-desc">Incense, sage, and more.</p>
+        </div>
+        <div class="cat-grid" id="grid-spiritual_accessories">
+          <div class="cat-empty">📸 Photos coming soon</div>
+        </div>
+      </div>
+
+      <div class="cat-divider"></div>
+
       <!-- APPAREL -->
       <div class="product-category">
         <div class="cat-header">
@@ -980,6 +1009,8 @@
           <div class="cat-empty">📸 Photos coming soon</div>
         </div>
       </div>
+
+      <div class="cat-divider"></div>
 
       <!-- BEADS & NECKLACES -->
       <div class="product-category">
@@ -1043,7 +1074,9 @@
           <select id="service" name="service" required>
             <option value="" disabled selected>— Select a service —</option>
             <option value="Ifa Consultation / Reading">Ifa Consultation / Reading — $50+</option>
-            <option value="Spiritual Supplies">Spiritual Supplies & Apparel</option>
+            <option value="Candles">Candles</option>
+            <option value="Soperas">Soperas & Tools</option>
+            <option value="Spiritual Accessories">Spiritual Accessories</option>
             <option value="Apparel">Apparel</option>
             <option value="Herbs & Natural Remedies">Herbs & Natural Remedies</option>
             <option value="Spiritual Work & Cleansings">Spiritual Work & Cleansings</option>
@@ -1210,7 +1243,7 @@
   <!-- ── FOOTER ── -->
   <footer>
     <p>© 2025 Botanica Ogbe Oshe, LLC &nbsp;·&nbsp; All Rights Reserved</p>
-    <p>Ifa Consultations &nbsp;·&nbsp; Spiritual Supplies &nbsp;·&nbsp; Herbs &nbsp;·&nbsp; Apparel &nbsp;·&nbsp; Orange City, FL</p>
+    <p>Ifa Consultations &nbsp;·&nbsp; Candles &nbsp;·&nbsp; Herbs &nbsp;·&nbsp; Spiritual Supplies &nbsp;·&nbsp; Apparel &nbsp;·&nbsp; Orange City, FL</p>
   </footer>
 
   <script>
@@ -1221,11 +1254,13 @@
     (function() {
       const CLOUD = 'dsodeeokk';
       const categories = [
-        { tag: 'candles',  grid: 'grid-candles' },
-        { tag: 'herbs',    grid: 'grid-herbs'   },
-        { tag: 'waters',   grid: 'grid-waters'  },
-        { tag: 'apparel',  grid: 'grid-apparel'  },
-        { tag: 'beads',    grid: 'grid-beads'   }
+        { tag: 'candles',               grid: 'grid-candles'               },
+        { tag: 'soperas',               grid: 'grid-soperas'               },
+        { tag: 'herbs',                 grid: 'grid-herbs'                 },
+        { tag: 'waters',                grid: 'grid-waters'                },
+        { tag: 'spiritual_accessories', grid: 'grid-spiritual_accessories'  },
+        { tag: 'apparel',               grid: 'grid-apparel'               },
+        { tag: 'beads',                 grid: 'grid-beads'                 }
       ];
 
       categories.forEach(({ tag, grid }) => {
@@ -1261,7 +1296,7 @@
               const name      = img.context?.custom?.caption || '';
               const outOfStock = img.context?.custom?.out_of_stock === 'true';
               const numPrice  = parseFloat((salePrice || price).replace(/[^0-9.]/g, '')) || 0;
-              const productId = (name || img.public_id).toLowerCase().replace(/[^a-z0-9]/g, '_');
+              const productId = img.public_id.replace(/[^a-zA-Z0-9]/g, '_');
 
               const card = document.createElement('div');
               card.className = 'cat-item';
@@ -1279,7 +1314,7 @@
                   data-item-id="${productId}"
                   data-item-name="${name}"
                   data-item-price="${numPrice}"
-                  data-item-url="https://botanicaogbeose.com/products.json"
+                  data-item-url="/"
                   data-item-image="${url}"
                   data-item-description="${tag}"
                   ${outOfStock ? 'disabled' : ''}
