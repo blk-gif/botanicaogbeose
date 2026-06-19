@@ -1264,7 +1264,7 @@
 
       categories.forEach(({ tag, grid }) => {
         const el = document.getElementById(grid);
-        if (!el) return;
+        if (!el && tag !== 'herbs') return
         fetch(`https://res.cloudinary.com/${CLOUD}/image/list/${tag}.json?_=${Date.now()}`)
           .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
           .then(data => {
